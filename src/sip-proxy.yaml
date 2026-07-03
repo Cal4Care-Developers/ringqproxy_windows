@@ -1,0 +1,46 @@
+admin:
+  addr: "192.168.10.112:8899"
+
+proxies:
+  - name: "RingQ-Proxy"
+
+    pbx-domain: "sgringq102.ringq.ai"
+    pbx-api-url: "https://sgringq102.ringq.ai:8443"
+    auth-key: "mTcZ0PVA1zoqw0nUxaQdkw"
+
+    device-id: ""
+
+    dialog-timeout: 1200
+    no-received: false
+    must-record-route: true
+    keep-next-hop-route: "no"
+
+    listens:
+      - address: "192.168.10.112"
+        udp-port: 5060
+        tcp-port: 5061
+        via: "udp://43.225.164.198:5060"
+        backends:
+          - address: "tcp://sgringq102.ringq.ai:6010" 	#6010
+
+    route:
+      - dests:
+          - "sgringq102.ringq.ai"
+        protocol: tcp
+        nexthop: "sgringq102.ringq.ai:6010"		#6010
+      - dests:
+          - "default"
+        protocol: tcp
+        nexthop: "sgringq102.ringq.ai:6010"		#6010
+
+    hosts:
+      - name: "sgringq102.ringq.ai"
+        ip:   "sgringq102.ringq.ai"
+      - name: "192.168.10.112,43.225.164.198"
+        ip:   "192.168.10.112"
+
+hosts:
+  - name: "sgringq102.ringq.ai"
+    ip:   "sgringq102.ringq.ai"
+  - name: "192.168.10.112,43.225.164.198"
+    ip:   "192.168.10.112"
