@@ -10,7 +10,7 @@ tooling.
 
 ## 1. Authentication Model
 
-Identical to Linux. The Windows PC POSTs to `https://<pbx-domain>:443/tunnel/bind` with:
+Identical to Linux. The Windows PC POSTs to `https://<pbx-domain>:443/sbc/tunnel/bind` with:
 
 ```json
 {
@@ -75,7 +75,7 @@ PBX, same as Linux:
   +----------------------+
   Runs as Windows Service "RingQProxy" (via NSSM)
   Admin API (port 8899)
-  Heartbeat -> :443/tunnel/heartbeat
+  Heartbeat -> :443/sbc/tunnel/heartbeat
 ```
 
 **Critical requirement, unchanged from Linux**: if the cloud security
